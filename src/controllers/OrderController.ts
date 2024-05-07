@@ -23,6 +23,21 @@ type CheckoutSessionRequest={
     restaurantId:string;
 }
 
+const getOrders=async (req:Request,res:Response) => {
+  try{
+    const orders= await Order.find({user:req.userId})
+    .populate("restaurant")
+    .populate("user")
+
+    res.json(orders)
+  }
+  catch(error){
+    console.log(error);
+    res.status(500).json({message:"Something Went Wrong"})
+  }
+  
+}
+
 const stripeWebhookHandeler= async(req:Request,res:Response)=>{
   let event;  
   try{
@@ -144,4 +159,4 @@ const createSession= async(lineItems:Stripe.Checkout.SessionCreateParams.LineIte
     })
     return sessionData;
 }
-export default {createCheckoutSession,stripeWebhookHandeler};
+export default {createCheckoutSession,stripeWebhookHandeler,getOrders};

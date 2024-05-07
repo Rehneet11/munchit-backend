@@ -6,6 +6,8 @@ const router=express.Router();
 
 router.post("/checkout/webhook",OrderController.stripeWebhookHandeler)
 
+router.get("/",jwtCheck,jwtParse,OrderController.getOrders)
+
 router.post(
     "/checkout/create-checkout-session",
     jwtCheck,
