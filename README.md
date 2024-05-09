@@ -53,6 +53,7 @@ Once the server is running, you can access the MunchIt backend APIs using tools 
 - MongoDB
 - TypeScript
 - Auth0
+- Stripe
 
 ## Contributing
 
