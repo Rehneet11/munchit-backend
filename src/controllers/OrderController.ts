@@ -154,7 +154,7 @@ const createSession= async(lineItems:Stripe.Checkout.SessionCreateParams.LineIte
             orderId,
             restaurantId,
         },
-        success_url:`${FRONTEND_URL}/order-status?success=true`,
+        success_url:`${FRONTEND_URL}/order-status`,
         cancel_url:`${FRONTEND_URL}/detail/${restaurantId}?cancelled=true`,
     })
     return sessionData;
